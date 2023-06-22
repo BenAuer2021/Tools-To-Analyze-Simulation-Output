@@ -1,6 +1,16 @@
 # Tools-To-Analyze-Simulation-Output
 
-## GATE Projection - Interfile Format
+These tutorials are developed and maintained by Auer Benjamin from the Brigham and Women's Hospital and Harvard Medical School, Boston, MA, USA.
+
+**Contact:** Auer, Benjamin Ph.D <bauer@bwh.harvard.edu>
+
+Table of contents:
+```diff
+- 1. GATE Projection - Interfile Format
+- 2. Sample Analysis ROOT Code for SPECT application
+```
+
+# 1. GATE Projection - Interfile Format
 
 ### Details from the GATE simulation
 GATE can produce projection data in interfile format (*.hdr *.sin) that can be imported in [Amide]{https://amide.sourceforge.net} or [ImageJ]{https://imagej.net/software/fiji/}. 
@@ -26,18 +36,18 @@ To import the raw projection file in Amide or ImageJ, the below import parameter
 ### How to merged projection files together?
 If the simulation was parallelized into multiple individual lower count simulations, a number of interfile projection files will be created. We provide a python script (`Concatenate_Interfile_From_GATE_NumberOfFiles.py`) that merged a given number of interfile projection image and print out the total number of counts in each set. https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/blob/main/Concatenate_Interfile_From_GATE_NumberOfFiles.py
 
-## GATE Root Output
+# 2. GATE Root Output
 GATE can also create a root file (*.root) that includes all the details of the simulation. This output is generally prefered as it includes important details on the counts detected (e.g. scatter/primary, source/detected locations, energy, ...). Such file can thus be processed in a way that the simulation does not have to be re-run if the energy window is changed for example.
 
-### Interactive Viewer
+## Interactive Viewer
 The content of any root file can be visualized in root via the following command,`root --web=off ROOT_FILE.root`. Then, type `TBrowser T` in the root prompt and a visualization window will pop up. You can right click on any TTree (Photopeak for example) and select StartViewer, a second window will pop up allowing you to visualize details of the simulation for example, detected locations in 3D by dragging the globalPosX, globalPosY, globalPosZ into the X,Y,Z flags of the second window (top left).
 
 Example fo visualize the energy spectrum in the photpeak window,
 <img width="1500" alt="Screen Shot 2023-06-22 at 11 25 09 AM" src="https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/719e8c5d-3cfc-4092-94e7-6b8713469ff1">
 
-### Sample Analysis ROOT Code for SPECT application
+## Sample Analysis ROOT Code for SPECT application
 
-#### Details
+### Details
 We provide a sample root analysis code that produces the 2D projections for scatter, primary, and total events as well as with the [Triple Energy Window Scatter correction technique]{https://ieeexplore.ieee.org/abstract/document/97591} routinely used in clinic. The 2D projections are written as *img files (unsigned integer 32 bit), the total counts contained in each of these projection set is also print out. This code also produces the energy spectra for the photopeak and full spectrum for primary, scatter, and total counts. 
 
 The following parameters need to be defined in the top section of the code,
@@ -58,12 +68,12 @@ Float_t Scatter_Upper_E_min=0.112, Scatter_Upper_E_max=0.126;
 Float_t Scatter_Lower_E_min=0.154, Scatter_Lower_E_max=0.168;
 ```
 
-#### How to Run it?
-Start root by typing 'root' in a terminal window, and then compile the code and create libraries via `.L Projection_macro.cpp++`. The code can then be run via the command 'Projection_macros("Brightview_Main_LEHR_Tc99m_BoneScan_pos2_1000_files")'. For the code the be find in all directories in a given computer, add the Projection_macro.cpp file into the 'share/root/macros' folder.
+### How to Run it?
+Start root by typing 'root' in a terminal window, and then compile the code and create libraries via `.L Projection_macro.cpp++`. The code can then be run via the command 'Projection_macros("LEHR_BoneScan_pos2_0.5Bq_Correct_100_files")'. For the code the be find in all directories in a given computer, add the Projection_macro.cpp file into the 'share/root/macros' folder.
 
 ![image](https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/f44f3dfa-b081-4e4d-9753-22c32a72b860)
 
-#### What output does it create?
+### What output does it create?
 
 The 'Projection_macro.cpp' code creates the 2D projection for the photopeak in a pdf file, as well as the scatter, primary, total energy spectra for the photopeak and full spectrum,
 ```ruby
