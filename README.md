@@ -44,15 +44,15 @@ GATE can also create a root file (*.root) that includes all the details of the s
 ## Interactive Viewer
 The content of any root file can be visualized in root via the following command,`root --web=off ROOT_FILE.root`. Then, type `TBrowser T` in the root prompt and a visualization window will pop up. You can right click on any TTree (Photopeak for example) and select StartViewer, a second window will pop up allowing you to visualize details of the simulation for example, detected locations in 3D by dragging the globalPosX, globalPosY, globalPosZ into the X,Y,Z flags of the second window (top left).
 
-Example fo visualize the energy spectrum in the photpeak window,
+Example to visualize the energy spectrum in the photpeak window:
 <img width="1500" alt="Screen Shot 2023-06-22 at 11 25 09 AM" src="https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/719e8c5d-3cfc-4092-94e7-6b8713469ff1">
 
-## Sample Analysis ROOT Code for SPECT application
+## Sample Analysis ROOT Code for SPECT applications
 
 ### Details
-We provide a sample root analysis code that produces the 2D projections for scatter, primary, and total events as well as with the [Triple Energy Window Scatter correction technique]{https://ieeexplore.ieee.org/abstract/document/97591} routinely used in clinic. The 2D projections are written as *img files (unsigned integer 32 bit), the total counts contained in each of these projection set is also print out. This code also produces the energy spectra for the photopeak and full spectrum for primary, scatter, and total counts. 
+We provide a sample root analysis code that produces the 2D projections for scatter, primary, and total events. It also applies the [Triple Energy Window Scatter correction technique]{https://ieeexplore.ieee.org/abstract/document/97591} routinely used in clinical practise for scatter correction. The 2D projections are written as *.img files (unsigned integer 32 bit), the total counts contained in each of these projection set is also printed out. This code also produces the energy spectra for the photopeak and full spectrum for primary, scatter, and total counts. 
 
-The following parameters need to be defined in the top section of the code,
+The following parameters need to be defined in the top section of the code:
 
  ```ruby 
 UInt_t nProjection_per_head = 32; //60
@@ -70,8 +70,8 @@ Float_t Scatter_Upper_E_min=0.112, Scatter_Upper_E_max=0.126;
 Float_t Scatter_Lower_E_min=0.154, Scatter_Lower_E_max=0.168;
 ```
 
-### How to Run it?
-Start root by typing 'root' in a terminal window, and then compile the code and create libraries via `.L Projection_macro.cpp++`. The code can then be run via the command 'Projection_macros("LEHR_BoneScan_pos2_0.5Bq_Correct_100_files")'. For the code the be find in all directories in a given computer, add the Projection_macro.cpp file into the 'share/root/macros' folder.
+### How to run the code
+Start root by typing 'root' in a terminal window, and then compile the code and create libraries via `.L Projection_macro.cpp++`. The code can then be run via the command 'Projection_macros("LEHR_BoneScan_pos2_0.5Bq_Correct_100_files")'. For the code the be found in all directories in a given computer, add the Projection_macro.cpp file into the 'share/root/macros' folder.
 
 ![image](https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/f44f3dfa-b081-4e4d-9753-22c32a72b860)
 
