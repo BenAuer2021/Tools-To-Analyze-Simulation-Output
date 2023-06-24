@@ -27,17 +27,19 @@ In the bone imaging example described in details at the bottom in the **section 
 /gate/output/projection/pixelNumberX 230
 /gate/output/projection/pixelNumberY 170
 ```
-### How to import projection file into an image viewer software?
-To import the raw projection file in Amide or ImageJ, the below import parameters needs to be applied,
+### How to import projection file into an image viewer software
+To import the raw projection file in Amide or ImageJ, the below import parameters need to be applied:
 <img width="682" alt="image" src="https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/fb19e9a8-b591-4001-940a-2bf7e4d4c622">
 
 <img width="978" alt="Screen Shot 2023-06-22 at 11 04 04 AM" src="https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/03fe5e6a-5f36-4ad0-abd2-bb573d1d3b87">
 
+In ImageJ, use File -> Import Raw... on the .sin file and then use the same parameters shown above. 
+
 ### How to merged projection files together?
-If the simulation was parallelized into multiple individual lower count simulations, a number of interfile projection files will be created. We provide a python script (`Concatenate_Interfile_From_GATE_NumberOfFiles.py`) that merged a given number of interfile projection image and print out the total number of counts in each set. https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/blob/main/Concatenate_Interfile_From_GATE_NumberOfFiles.py
+If the simulation was parallelized into multiple individual lower count simulations, a number of interfile projection files will be created. We provide a python script (`Concatenate_Interfile_From_GATE_NumberOfFiles.py`) that merges a given number of interfile projection image and prints out the total number of counts in each set. The file is available here: https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/blob/main/Concatenate_Interfile_From_GATE_NumberOfFiles.py
 
 # 2. GATE Root Output
-GATE can also create a root file (*.root) that includes all the details of the simulation. This output is generally prefered as it includes important details on the counts detected (e.g. scatter/primary, source/detected locations, energy, ...). Such file can thus be processed in a way that the simulation does not have to be re-run if the energy window is changed for example.
+GATE can also create a root file (*.root) that includes all the details of the simulation. This output is generally prefered as it includes important details on the counts detected (e.g. scatter/primary, source/detected locations, energy, ...). The root file can thus be processed in a way that the simulation does not have to be re-run if the energy window is changed for example.
 
 ## Interactive Viewer
 The content of any root file can be visualized in root via the following command,`root --web=off ROOT_FILE.root`. Then, type `TBrowser T` in the root prompt and a visualization window will pop up. You can right click on any TTree (Photopeak for example) and select StartViewer, a second window will pop up allowing you to visualize details of the simulation for example, detected locations in 3D by dragging the globalPosX, globalPosY, globalPosZ into the X,Y,Z flags of the second window (top left).
