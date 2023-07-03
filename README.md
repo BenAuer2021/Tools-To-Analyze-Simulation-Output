@@ -13,9 +13,9 @@ Table of contents:
 # 1. GATE Projection - Interfile Format
 
 ### Details from the GATE simulation
-GATE can produce projection data in interfile format (*.hdr *.sin) that can be imported in [Amide]{https://amide.sourceforge.net} or [ImageJ]{https://imagej.net/software/fiji/}. 
+GATE can produce projection data in interfile format (*.hdr *.sin) that can be imported in [Amide](https://amide.sourceforge.net) or [ImageJ](https://imagej.net/software/fiji/) for example. 
 
-In the bone imaging example described in details at the bottom in the **section 5** of this [page]{https://github.com/BenAuer2021/Simulation-Of-Nuclear-Medicine-Imaging-Systems-Scintigraphy-SPECT}, 64 projections of 230 by 170 (0.234 mm<sup>2</sup>) were created. Note, the projection plane is defined from the crystal compartment sizes and referencial. Thus, if the crystal or the SPECTHead volumes are shifted the projection plane shifts along the same parameter.
+In the bone imaging example described in details at the bottom in the **section 5** of this [page](https://github.com/BenAuer2021/Simulation-Of-Nuclear-Medicine-Imaging-Systems-Scintigraphy-SPECT), 64 projections of 230 by 170 (0.234 mm<sup>2</sup>) were created. Note, the projection plane is defined from the crystal compartment sizes and referencial. Thus, if the crystal or the SPECTHead volumes are shifted the projection plane shifts along the same parameter.
 
 ```ruby
 /gate/output/projection/enable
@@ -50,7 +50,7 @@ Example to visualize the energy spectrum in the photpeak window:
 ## Sample Analysis ROOT Code for SPECT applications
 
 ### Details
-We provide a sample root analysis code that produces the 2D projections for scatter, primary, and total events. It also applies the [Triple Energy Window Scatter correction technique]{https://ieeexplore.ieee.org/abstract/document/97591} routinely used in clinical practise for scatter correction. The 2D projections are written as *.img files (unsigned integer 32 bit), the total counts contained in each of these projection set is also printed out. This code also produces the energy spectra for the photopeak and full spectrum for primary, scatter, and total counts. 
+We provide a sample root analysis code that produces the 2D projections for scatter, primary, and total events. It also applies the [Triple Energy Window Scatter correction technique](https://ieeexplore.ieee.org/abstract/document/97591) routinely used in clinical practise for scatter correction. The 2D projections are written as *.img files (unsigned integer 32 bit), the total counts contained in each of these projection set is also printed out. This code also produces the energy spectra for the photopeak and full spectrum for primary, scatter, and total counts. 
 
 The following parameters need to be defined in the top section of the code:
 
@@ -71,13 +71,13 @@ Float_t Scatter_Lower_E_min=0.154, Scatter_Lower_E_max=0.168;
 ```
 
 ### How to run the code
-Start root by typing 'root' in a terminal window, and then compile the code and create libraries via `.L Projection_macro.cpp++`. The code can then be run via the command 'Projection_macros("LEHR_BoneScan_pos2_0.5Bq_Correct_100_files")'. For the code the be found in all directories in a given computer, add the Projection_macro.cpp file into the 'share/root/macros' folder.
+Start root by typing `root` in a terminal window, and then compile the code and create libraries via `.L Projection_macro.cpp++`. The code can then be run via the command `Projection_macros("LEHR_BoneScan_pos2_0.5Bq_Correct_100_files")`. For the code the be found in all directories in a given computer, add the Projection_macro.cpp file into the `share/root/macros` folder.
 
 ![image](https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/f44f3dfa-b081-4e4d-9753-22c32a72b860)
 
 ### What output does it create?
 
-The 'Projection_macro.cpp' code creates the 2D projection for the photopeak in a pdf file, as well as the scatter, primary, total energy spectra for the photopeak and full spectrum,
+The `Projection_macro.cpp` code creates the 2D projection for the photopeak in a pdf file, as well as the scatter, primary, total energy spectra for the photopeak and full spectrum,
 ```ruby
 FileNamePhotopeak_Projection2D.pdf
 FileNamePhotopeakSpectra.pdf
