@@ -47,6 +47,7 @@ The content of any root file can be visualized in root via the following command
 Example to visualize the energy spectrum in the photpeak window:
 <img width="1500" alt="image" src="https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/b80aeb8f-9d40-4a82-9fa9-135ea15ef6c8">
 
+https://github.com/BenAuer2021/Tools-To-Analyze-Simulation-Output/assets/84809217/1009fcbf-a270-4bd0-81e6-39b23ad58c3a
 
 ## Sample Analysis ROOT Code for SPECT applications
 
